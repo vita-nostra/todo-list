@@ -9,6 +9,8 @@ class EditController extends Controller
 {
     public function __invoke(Task $task)
     {
+        $this->authorize('destroy', $task);
         return view('account.task.edit', compact('task'));
     }
 }
+

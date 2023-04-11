@@ -9,8 +9,11 @@ class DeleteController extends Controller
 {
     public function __invoke(Task $task)
     {
+        $this->authorize('destroy', $task);
+
         $task->delete();
 
         return redirect()->route('account.task.index');
     }
 }
+

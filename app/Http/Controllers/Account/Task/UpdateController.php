@@ -10,9 +10,12 @@ class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, Task $task)
     {
+        $this->authorize('destroy', $task);
+
         $data = $request->validated();
         $task->update($data);
 
         return redirect()->route('account.task.show', $task->id);
     }
 }
+

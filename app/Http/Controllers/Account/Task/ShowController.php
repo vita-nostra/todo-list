@@ -9,6 +9,7 @@ class ShowController extends Controller
 {
     public function __invoke(Task $task)
     {
+        $this->authorize('destroy', $task);
         return view('account.task.show', compact('task'));
     }
 }
